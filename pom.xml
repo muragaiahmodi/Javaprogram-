@@ -1,31 +1,51 @@
-import java.util.Scanner;  
-public class NumberGuess {  
-    public static void playGame() {  
-        Scanner scanner = new Scanner(System.in);  
-        int secretNumber = 1 + (int)(100 * Math.random());  
-        int maxAttempts = 5;  
-        int attempts, guess;  
-        System.out.println("Welcome to the Number Guessing Game!");  
-        System.out.println("A number has been chosen between 1 and 100.");  
-        System.out.println("Your task is to guess the number within 5 attempts.");  
-        for (attempts = 0; attempts < maxAttempts; attempts++) {  
-            System.out.println("Attempt " + (attempts + 1) + ": Enter your guess:");  
-            guess = scanner.nextInt();  
-            if (secretNumber == guess) {  
-                System.out.println("Congratulations! You've guessed the correct number.");  
-                break;  
-            } else if (secretNumber > guess && attempts != maxAttempts - 1) {  
-                System.out.println("The secret number is greater than your guess.");  
-            } else if (secretNumber < guess && attempts != maxAttempts - 1) {  
-                System.out.println("The secret number is less than your guess.");  
-            }  
-        }  
-        if (attempts == maxAttempts) {  
-            System.out.println("You have exhausted all " + maxAttempts + " attempts.");  
-            System.out.println("The secret number was " + secretNumber);  
-        }  
-    }  
-    public static void main(String args[]) {  
-        playGame();  
-    }  
-}  
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>in.RAHAM</groupId>
+	<artifactId>NETFLIX</artifactId>
+	<packaging>war</packaging>
+	<version>1.2.2</version>
+	<name>Java Home myweb</name>
+	<url>http://maven.apache.org</url>
+	
+	<properties>
+		<docker.image.prefix>kammana</docker.image.prefix>
+	</properties>	
+	<dependencies>
+		<dependency>
+		    <groupId>com.oracle.bedrock</groupId>
+		    <artifactId>bedrock-runtime-maven</artifactId>
+		    <version>5.1.2</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+	
+	<distributionManagement>
+		 <snapshotRepository>
+		    <id>nexusRepo</id>
+		    <url>http://13.233.230.166:8081/repository/maven-snapshots/</url>
+		 </snapshotRepository>
+		
+		<repository>
+		    <id>nexusRepo</id>
+		    <url>http://13.233.230.166:8081/repository/maven-releases/</url>
+		</repository>
+  	</distributionManagement>
+	
+	<pluginRepositories>
+	    <pluginRepository>    
+		<id>maven1</id>
+		<name>Maven.org</name>
+		<url>http://repo1.maven.org/maven2</url>
+	    </pluginRepository>
+	</pluginRepositories>
+
+	
+</project>
